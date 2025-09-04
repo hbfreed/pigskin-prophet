@@ -18,8 +18,9 @@ python3 pull_lines.py --day sunday
 ## Key Files
 
 - `pull_lines.py` - Fetches NFL betting lines from The Odds API
-- `tools/exa_tool.py` - Web search tool for research via Exa API
-- `tools/scratchpad_tool.py` - Persistent notes storage for models (20k token limit)
+- `environments/vf_nfl_picker/` - Verifiers environment package
+  - `tools/exa_tool.py` - Web search tool for research
+  - `tools/scratchpad_tool.py` - Persistent notes storage (20k token limit)
 - `data/` - JSON files organized by week
 - `.env` - API keys (gitignored)
 
