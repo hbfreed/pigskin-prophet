@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "pull_timestamp": "2025-09-04T14:11:07.359211-07:00",
+    "week": 1,
+    "season": 2025,
+    "week_start": "2025-09-04T00:00:00-07:00",
+    "week_end": "2025-09-10T23:59:00-07:00",
+    "day_filter": "thursday",
+    "games_count": 1
+  },
+  "games": [
+    {
+      "game_id": "f1bc532dff946d15cb85654b5c4b246e",
+      "home_team": "Philadelphia Eagles",
+      "away_team": "Dallas Cowboys",
+      "game_time": "2025-09-05T00:20:00Z",
+      "bookmaker_count": 9,
+      "home_spread": -8.0,
+      "away_spread": 8.0,
+      "total": 48.0
+    }
+  ]
+}

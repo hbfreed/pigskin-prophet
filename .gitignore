@@ -1,0 +1,16 @@
+# Environment variables and secrets
+.env
+
+# Scratchpads (model persistent storage)
+scratchpads/
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
