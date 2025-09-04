@@ -1,155 +1,137 @@
 # Pigskin Prophet
 
-**An NFL spread prediction benchmark for LLMs using active information gathering**
+**A benchmark for evaluating AI model reasoning and research capabilities using NFL sports analysis tasks**
 
 ## Overview
 
-Pigskin Prophet is a [Verifiers](https://github.com/willccbb/verifiers) environment that benchmarks LLMs on their ability to predict NFL game spreads. Models will actively research games using a limited budget of [Exa API](https://exa.ai/) searches (3 per game), maintaining a persistent scratchpad across weeks to build and refine their knowledge.
+Pigskin Prophet is a [Verifiers](https://github.com/willccbb/verifiers) benchmark that evaluates how well AI models can gather information, analyze data, and make reasoned assessments. Using NFL games as a complex, real-world domain, it tests models' abilities to research, synthesize information, and maintain knowledge over time.
+
+## Purpose
+
+This is an **evaluation benchmark**, not a prediction system. It measures:
+- Information gathering strategies
+- Research efficiency with limited resources
+- Knowledge synthesis from multiple sources
+- Persistent memory management
+- Reasoning under uncertainty
 
 ## Key Features
 
-### Active Research
-- Models get **3 Exa API searches per game** to gather information
-- Search queries are completely model-determined
-- Models must balance search budget across all games in a week
+### Active Research Capabilities
+- Models get **limited web searches** to gather information
+- Must strategically allocate research resources
+- Tests information prioritization and search query formulation
 
-### Persistent Scratchpad
-- Each model maintains a scratchpad (knowledge base) across the entire season
-- TODO(human): Define scratchpad constraints:
-  - Maximum size (e.g., 10,000 tokens)?
-  - Structure (free-form text vs. structured JSON)?
-  - Can models read their past predictions and outcomes?
+### Persistent Knowledge Base
+- Each model maintains a scratchpad across evaluation rounds
+- Tests long-term knowledge management
+- Evaluates ability to update beliefs with new information
 
-### Weekly Evaluation
-- Models predict spreads for all games each week
-- Predictions are scored against actual game outcomes
-- Running leaderboard tracks performance across the season
-- Models have a budget of 50 units, with a maximum of 5 units per game 
+### Multi-Week Evaluation
+- Continuous assessment across multiple weeks
+- Tests adaptation and learning from past assessments
+- Measures consistency and improvement over time
+
+## Benchmark Components
+
+1. **Data Collection**: Provides consistent NFL odds data as evaluation inputs
+2. **Research Tools**: Limited web search budget via Exa API
+3. **Scratchpad System**: 20k token persistent storage for each model
+4. **Scoring Framework**: Evaluates reasoning quality and resource efficiency
 
 ## How It Works
 
-1. **Weekly Setup**: Each week, models receive:
-   - The week's schedule
-   - Their scratchpad from previous weeks
-   - Search budget (3 searches per game)
+1. **Setup Phase**: Models receive:
+   - Current week's NFL game data
+   - Access to their persistent scratchpad
+   - Limited search budget for research
 
 2. **Research Phase**: Models can:
-   - Query Exa for team stats, injury reports, weather, trends, etc.
-   - Update their scratchpad with findings
-   - Strategize which games need more research
+   - Query web for contextual information
+   - Update their knowledge base
+   - Strategize resource allocation
 
-3. **Prediction Phase**: Models must predict:
-   - Point spread for each game (home team perspective)
-   - A number of units to bet on each game (1-5) 
-   - The reasoning
+3. **Analysis Phase**: Models produce:
+   - Assessments for each game
+   - Reasoning explanations
+   - Confidence indicators
 
-4. **Scoring**: 
-   - TODO(human): Define the scoring system:
-     - Binary (correct side of spread)?
-     - Graduated (closer spreads score higher)?
-     - Confidence-weighted?
-   - TODO(human): How to handle pushes?
-
-## Leaderboard Metrics
-
-TODO(human): Which metrics should we track?
-- **Accuracy**: Percentage of correct spread picks
-- **Calibration**: How well confidence aligns with accuracy  
-- **ROI**: Simulated return if betting equal amounts
-- **Search Efficiency**: Performance per search used
-- **Weekly Rank**: Position each week
-- **Trend**: Improvement over time
-
-## Model Access
-
-All models are accessed via [OpenRouter](https://openrouter.ai/), as to not need to juggle a million api keys. 
-The idea is that using one search provider ([Exa](https://exa.ai/)) for research should level the playing field, since different model providers use different serach providers.
+4. **Evaluation**: Scoring based on:
+   - Reasoning quality
+   - Information usage efficiency
+   - Consistency with available data
+   - Resource management
 
 ## Installation
 
 ```bash
-# Install with uv (recommended)
-uv add verifiers
-vf-install vf-nfl-picker --from-local ./environments
+# Install dependencies
+uv pip install python-dotenv requests exa-py tiktoken
 
-# Or install from repo
-vf-install vf-nfl-picker --from-repo
+# Set up API keys in .env file
+ODDS_API_KEY=your_odds_api_key
+EXA_API_KEY=your_exa_api_key
+OPENROUTER_API_KEY=your_openrouter_api_key
 ```
+
+## Project Structure
+
+```
+pigskin-prophet/
+├── pull_lines.py           # Fetches NFL data for consistent inputs
+├── tools/
+│   ├── exa_tool.py         # Web search tool (limited queries)
+│   └── scratchpad_tool.py  # Persistent storage (20k tokens)
+├── environments/
+│   └── vf_nfl_picker/      # Verifiers environment
+└── data/
+    └── week_*/             # Weekly NFL data snapshots
+```
+
+## Research Focus
+
+This benchmark is designed to study:
+- **Information Gathering**: How models prioritize and search for information
+- **Knowledge Management**: How models organize and update persistent knowledge
+- **Resource Allocation**: How models budget limited research resources
+- **Reasoning Patterns**: How models synthesize multiple information sources
+- **Uncertainty Handling**: How models reason with incomplete information
 
 ## Usage
 
-### Quick Evaluation
-```bash
-# Test a model on one week
-vf-eval vf-nfl-picker -m gpt-4 --week 10 --season 2024
+### For Researchers
+Use this benchmark to evaluate:
+- Multi-tool agent architectures
+- Information retrieval strategies
+- Long-term memory systems
+- Reasoning under constraints
 
-# Run full season simulation
-vf-eval vf-nfl-picker -m gpt-4,claude-3,gemini --full-season
-```
+### For Model Developers
+Test your models on:
+- Complex real-world reasoning tasks
+- Resource-constrained decision making
+- Multi-round evaluation scenarios
+- Information synthesis challenges
 
-### Custom Implementation
-```python
-import verifiers as vf
+## Limitations
 
-# Load environment
-env = vf.load_environment(
-    "vf-nfl-picker",
-    searches_per_game=3,
-    week_number=10,
-    season_year=2024
-)
-
-# Run evaluation
-results = env.evaluate(
-    client=OpenRouterClient(),
-    model="gpt-4",
-    num_examples=1,  # One week
-    rollouts_per_example=1
-)
-```
-
-
-
-## Development Roadmap
-
-- [ ] TODO(human): Design scratchpad persistence mechanism
-- [ ] TODO(human): Create scoring rubric
-- [ ] TODO(human): Build leaderboard visualization
-- [ ] TODO(human): Add historical season data for backtesting
-- [ ] TODO(human): Implement confidence calibration metrics
-
-## Questions for Implementation
-
-1. **Search Budget**: 
-   - Is 3 searches per game enough? Too many?
-   - Should playoff games get more searches?
-   - Can unused searches carry over?
-
-2. **Scratchpad Rules**:
-   - Size limits?
-   - Can models delete old information?
-   - Should we provide a "default" structure?
-
-3. **Evaluation Period**:
-   - Start from Week 1 or mid-season?
-   - Include playoffs?
-   - How to handle bye weeks?
-
-4. **Scoring System**:
-   - Reward beating Vegas spreads or just picking winners?
-   - How much should confidence factor in?
-   - Penalty for using all searches?
+- This is a **benchmark tool**, not a prediction system
+- Evaluates reasoning processes, not prediction accuracy
+- Focuses on information gathering and synthesis capabilities
+- Uses sports domain as a complex but bounded test environment
 
 ## Contributing
 
-This is an experimental benchmark designed to test LLMs' ability to:
-- Actively gather relevant information
-- Build persistent knowledge over time
-- Make calibrated predictions under uncertainty
-- Balance resource usage (search budget)
+This benchmark is part of ongoing research into AI model evaluation. We welcome contributions for:
+- Improved evaluation metrics
+- Additional research tools
+- Enhanced scoring rubrics
+- Extended test domains
 
-Contributions and suggestions welcome!
+## Ethics Note
+
+This system is designed for AI research and benchmarking purposes only. It evaluates how models process and analyze information, not their ability to predict real-world outcomes.
 
 ---
 
-*Part of the [Verifiers](https://github.com/willccbb/verifiers) ecosystem for LLM evaluation and training*
+*Part of the [Verifiers](https://github.com/willccbb/verifiers) ecosystem for rigorous AI evaluation*

@@ -1,6 +1,6 @@
 # Pigskin Prophet
 
-NFL betting lines analysis and prediction system.
+Benchmark to test how well LLMs bet on NFL spreads.
 
 ## Quick Start
 
