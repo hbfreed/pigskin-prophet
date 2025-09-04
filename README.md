@@ -87,11 +87,6 @@ pigskin-prophet/
 
 - PRs more than welcome.
 
-
-## Ethics Note
-
-This system is designed for AI research and benchmarking purposes only. It evaluates how models process and analyze information, not their ability to predict real-world outcomes.
-
 ---
 
 *Part of the [Verifiers](https://github.com/willccbb/verifiers) ecosystem for rigorous AI evaluation*
