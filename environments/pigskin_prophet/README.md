@@ -1,9 +1,9 @@
-# vf-nfl-picker
+# pigskin-prophet
 
 > Replace the placeholders below, then remove this callout. Keep the Evaluation Reports section at the bottom intact so reports can auto-render.
 
 ### Overview
-- **Environment ID**: `vf-nfl-picker`
+- **Environment ID**: `pigskin-prophet`
 - **Short description**: <one-sentence description>
 - **Tags**: <comma-separated tags>
 
@@ -21,13 +21,13 @@
 Run an evaluation with default settings:
 
 ```bash
-uv run vf-eval vf-nfl-picker
+uv run vf-eval pigskin-prophet
 ```
 
 Configure model and sampling:
 
 ```bash
-uv run vf-eval vf-nfl-picker   -m gpt-4.1-mini   -n 20 -r 3 -t 1024 -T 0.7   -a '{"key": "value"}'  # env-specific args as JSON
+uv run vf-eval pigskin-prophet   -m gpt-4.1-mini   -n 20 -r 3 -t 1024 -T 0.7   -a '{"key": "value"}'  # env-specific args as JSON
 ```
 
 Notes:

@@ -1,1 +1,0 @@
-# vf_nfl_picker environment package

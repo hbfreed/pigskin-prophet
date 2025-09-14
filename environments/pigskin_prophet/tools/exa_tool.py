@@ -26,22 +26,19 @@ def _init_exa():
     return exa_client
 
 async def search_web_exa(
-    query: str, 
-    include_domains: Optional[List[str]] = None,
-    exclude_domains: Optional[List[str]] = None,
-    category: Optional[str] = None
+    query: str
 ) -> List[Dict]:
     """Search the web using Exa's search API.
     
     Args:
         query: Search query string
-        include_domains: Optional list of domains to include in search
-        exclude_domains: Optional list of domains to exclude from search
-        category: Optional category filter (company, research paper, news, etc.)
         
     Returns:
-        List of search results with title, url, and text content
+        List of search results with title, url, and summary content
     """
+    include_domains = None
+    exclude_domains = None  
+    category = None
     try:
         # Initialize client
         client = _init_exa()
@@ -55,11 +52,11 @@ async def search_web_exa(
             # Use keyword search type for cost efficiency ($2.50/1k vs $5/1k for neural)
             search_params = {
                 "query": query,
-                "type": "keyword",  # Cost-optimized choice
-                "num_results": 5,  # Hard-coded to prevent cheating
-                "text": True,  # Get full text ($1/1k)
-                "highlights": False,  # Skip highlights (save $1/1k)
-                "summary": False  # Skip summaries (save $1/1k)
+                "type": "keyword",
+                "num_results": 5,
+                "text": False, 
+                "highlights": False,
+                "summary": True  # Get AI-generated summaries
             }
             
             # Add optional filters
@@ -79,7 +76,7 @@ async def search_web_exa(
                 formatted_results.append({
                     "title": result.title,
                     "url": result.url,
-                    "text": result.text if result.text else "",
+                    "summary": result.summary if hasattr(result, 'summary') and result.summary else "",
                     "published_date": result.published_date if hasattr(result, 'published_date') else None
                 })
             
@@ -96,25 +93,22 @@ async def search_web_exa(
         return [{"error": f"Search error: {str(e)}"}]
 
 def search_web_exa_sync(
-    query: str, 
-    include_domains: Optional[List[str]] = None,
-    exclude_domains: Optional[List[str]] = None,
-    category: Optional[str] = None
+    query: str
 ) -> List[Dict]:
     """Synchronous version of search_web_exa for compatibility.
     
     Uses keyword search ($2.50/1k) instead of neural ($5/1k) and retrieves
-    full text content ($1/1k) without highlights or summaries to minimize costs.
+    summaries to provide focused content.
     
     Args:
         query: Search query string
-        include_domains: Optional list of domains to include in search
-        exclude_domains: Optional list of domains to exclude from search
-        category: Optional category filter (company, research paper, news, etc.)
         
     Returns:
-        List of search results with title, url, and text content
+        List of search results with title, url, and summary content
     """
+    include_domains = None
+    exclude_domains = None
+    category = None
     try:
         # Initialize client
         client = _init_exa()
@@ -126,9 +120,9 @@ def search_web_exa_sync(
             "query": query,
             "type": "keyword",  # Cost-optimized choice
             "num_results": 5,  # Hard-coded to prevent cheating
-            "text": True,  # Get full text ($1/1k)
-            "highlights": False,  # Skip highlights (save $1/1k)
-            "summary": False  # Skip summaries (save $1/1k)
+            "text": False,  # Skip full text
+            "highlights": False,  # Skip highlights
+            "summary": True  # Get AI-generated summaries ($1/1k)
         }
         
         # Add optional filters
@@ -148,7 +142,7 @@ def search_web_exa_sync(
             formatted_results.append({
                 "title": result.title,
                 "url": result.url,
-                "text": result.text if result.text else "",
+                "summary": result.summary if hasattr(result, 'summary') and result.summary else "",
                 "published_date": result.published_date if hasattr(result, 'published_date') else None
             })
         
