@@ -57,8 +57,8 @@ Example:
 Remember: Going 9-7 (56%) against the spread is outstanding. Focus on finding edges through smart research and pattern recognition."""
 
 
-from datetime import datetime, date, time
-from zoneinfo import ZoneInfo
+from datetime import datetime, date, time  # noqa: E402
+from zoneinfo import ZoneInfo  # noqa: E402
 
 def get_current_week(
     now: datetime | None = None,
