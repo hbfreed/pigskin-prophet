@@ -4,7 +4,7 @@ Optimized for cost-effective keyword search with full text retrieval.
 """
 
 import os
-from typing import List, Dict, Optional
+from typing import List, Dict
 from exa_py import Exa
 from dotenv import load_dotenv
 import asyncio
