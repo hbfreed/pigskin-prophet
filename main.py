@@ -31,13 +31,13 @@ def main():
 
     # List of models to evaluate
     models = [
-        "openai/gpt-5",
-        "openai/gpt-oss-120b",
-        "anthropic/claude-sonnet-4",
-        "google/gemini-2.5-flash",
-        "google/gemini-2.5-pro",
+        #"openai/gpt-5",
+        #"openai/gpt-oss-120b",
+        #"anthropic/claude-sonnet-4",
+        #"google/gemini-2.5-flash",
+        #"google/gemini-2.5-pro",
         # "deepseek/deepseek-chat-v3.1", #sadly, openrouter can't handle deepseek's tool calling or something
-        "moonshotai/kimi-k2-0905",
+        #"moonshotai/kimi-k2-0905",
         "z-ai/glm-4.5",
         "qwen/qwen3-235b-a22b-thinking-2507",
     ]

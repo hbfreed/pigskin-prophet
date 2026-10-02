@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "pull_timestamp": "2025-09-21T08:34:49.200000-07:00",
+    "week": 3,
+    "season": 2025,
+    "week_start": "2025-09-18T00:00:00-07:00",
+    "week_end": "2025-09-24T23:59:00-07:00",
+    "day_filter": "all",
+    "games_count": 15
+  },
+  "games": [
+    {
+      "game_id": "5737e4dbf6879c5061bb23033a4d8a55",
+      "home_team": "Carolina Panthers",
+      "away_team": "Atlanta Falcons",
+      "game_time": "2025-09-21T17:00:00Z",
+      "bookmaker_count": 9,
+      "home_spread": 4.5,
+      "away_spread": -4.5,
+      "total": 44.0
+    },
+    {
+      "game_id": "eefb7f130c8fc2c129e296fe5c6ba3e3",
+      "home_team": "Minnesota Vikings",
+      "away_team": "Cincinnati Bengals",
+      "game_time": "2025-09-21T17:00:00Z",
+      "bookmaker_count": 9,
+      "home_spread": -3.0,
+      "away_spread": 3.0,
+      "total": 42.5
+    },
+    {
+      "game_id": "581955d1b79fe87a3a61a4885cd7ea67",
+      "home_team": "Cleveland Browns",
+      "away_team": "Green Bay Packers",
+      "game_time": "2025-09-21T17:00:00Z",
+      "bookmaker_count": 9,
+      "home_spread": 7.5,
+      "away_spread": -7.5,
+      "total": 41.5
+    },
+    {
+      "game_id": "97de7672b61dbddbce982711c121e76d",
+      "home_team": "Jacksonville Jaguars",
+      "away_team": "Houston Texans",
+      "game_time": "2025-09-21T17:00:00Z",
+      "bookmaker_count": 9,
+      "home_spread": -1.5,
+      "away_spread": 1.5,
+      "total": 43.5
+    },
+    {
+      "game_id": "03a5eed2c8ef5d1c8a48866ea4b0d63a",
+      "home_team": "Washington Commanders",
+      "away_team": "Las Vegas Raiders",
+      "game_time": "2025-09-21T17:00:00Z",
+      "bookmaker_count": 9,
+      "home_spread": -3.0,
+      "away_spread": 3.0,
+      "total": 43.5
+    },
+    {
+      "game_id": "c4c42918a645b1a4773f47d7eaa5cfcf",
+      "home_team": "New England Patriots",
+      "away_team": "Pittsburgh Steelers",
+      "game_time": "2025-09-21T17:00:00Z",
+      "bookmaker_count": 9,
+      "home_spread": 1.0,
+      "away_spread": -1.0,
+      "total": 44.5
+    },
+    {
+      "game_id": "02522f48a7b7e7524881c1b1638cd94d",
+      "home_team": "Tampa Bay Buccaneers",
+      "away_team": "New York Jets",
+      "game_time": "2025-09-21T17:00:00Z",
+      "bookmaker_count": 9,
+      "home_spread": -6.5,
+      "away_spread": 6.5,
+      "total": 43.0
+    },
+    {
+      "game_id": "bb506016737825f4d0b1f9862f95c246",
+      "home_team": "Tennessee Titans",
+      "away_team": "Indianapolis Colts",
+      "game_time": "2025-09-21T17:01:00Z",
+      "bookmaker_count": 9,
+      "home_spread": 5.5,
+      "away_spread": -5.5,
+      "total": 43.5
+    },
+    {
+      "game_id": "4c4ae4a2d54fc3f71c450187e9391ddc",
+      "home_team": "Philadelphia Eagles",
+      "away_team": "Los Angeles Rams",
+      "game_time": "2025-09-21T17:01:00Z",
+      "bookmaker_count": 9,
+      "home_spread": -3.5,
+      "away_spread": 3.5,
+      "total": 45.5
+    },
+    {
+      "game_id": "0ee3f5a0078c21cfdffd1b97002e7da5",
+      "home_team": "Los Angeles Chargers",
+      "away_team": "Denver Broncos",
+      "game_time": "2025-09-21T20:05:00Z",
+      "bookmaker_count": 9,
+      "home_spread": -2.5,
+      "away_spread": 2.5,
+      "total": 45.5
+    },
+    {
+      "game_id": "311c411c2d53e36a902763dc7a2ef678",
+      "home_team": "Seattle Seahawks",
+      "away_team": "New Orleans Saints",
+      "game_time": "2025-09-21T20:05:00Z",
+      "bookmaker_count": 9,
+      "home_spread": -7.0,
+      "away_spread": 7.0,
+      "total": 41.5
+    },
+    {
+      "game_id": "186868cc79ce1f5d22075b67ebbc7b64",
+      "home_team": "Chicago Bears",
+      "away_team": "Dallas Cowboys",
+      "game_time": "2025-09-21T20:25:00Z",
+      "bookmaker_count": 9,
+      "home_spread": 1.0,
+      "away_spread": -1.0,
+      "total": 50.0
+    },
+    {
+      "game_id": "20b50dac292089c063b21e1410f172ef",
+      "home_team": "San Francisco 49ers",
+      "away_team": "Arizona Cardinals",
+      "game_time": "2025-09-21T20:26:00Z",
+      "bookmaker_count": 9,
+      "home_spread": -1.5,
+      "away_spread": 1.5,
+      "total": 44.5
+    },
+    {
+      "game_id": "ee840f13db8bd150fcdd8f6670fa7041",
+      "home_team": "New York Giants",
+      "away_team": "Kansas City Chiefs",
+      "game_time": "2025-09-22T00:21:00Z",
+      "bookmaker_count": 9,
+      "home_spread": 6.0,
+      "away_spread": -6.0,
+      "total": 44.5
+    },
+    {
+      "game_id": "6e67ddae4bb01d1c2d3f461ee62d2666",
+      "home_team": "Baltimore Ravens",
+      "away_team": "Detroit Lions",
+      "game_time": "2025-09-23T00:15:00Z",
+      "bookmaker_count": 9,
+      "home_spread": -4.5,
+      "away_spread": 4.5,
+      "total": 53.5
+    }
+  ]
+}
